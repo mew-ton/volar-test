@@ -1,12 +1,25 @@
 {
   "name": "language-server-yuni",
-  "type": "module",
   "version": "0.0.1",
+  "author": "mewton",
+  "publisher": "mewton",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mew-ton/volar-test",
+    "directory": "packages/language-server"
+  },
   "bin": {
     "yuni-language-server": "./bin/yuni-language-server.cjs"
   },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "jiti build.ts",
+    "build": "bun run build:js",
+    "build:js": "jiti build.ts",
+    "build:dts": "tsc --declaration --emitDeclarationOnly --outDir dist",
     "watch": "jiti build.ts --watch"
   },
   "dependencies": {

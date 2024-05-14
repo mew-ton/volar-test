@@ -4,12 +4,12 @@ import {
   type ExtraServiceScript,
   forEachEmbeddedCode,
 } from "@volar/language-core";
-import {
-  type CodeMapping,
-  type LanguagePlugin,
-  type VirtualCode,
+import type {
+  CodeMapping,
+  LanguagePlugin,
+  VirtualCode,
 } from "@volar/language-server/node.js";
-import { type default as TypeScript, type ScriptKind, type IScriptSnapshot } from "typescript";
+import type { default as TypeScript, ScriptKind, IScriptSnapshot } from "typescript";
 import { LANGUAGE_ID } from "./constants.ts";
 import { parse } from 'yaml'
 

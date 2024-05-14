@@ -2,15 +2,21 @@
   "name": "vscode-yuni",
   "displayName": "YUNI-CHAN Extension",
   "description": "VSCode Extension sample",
-  "type": "module",
+  "author": "mewton",
+  "publisher": "mewton",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.55.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mew-ton/volar-test",
+    "directory": "packages/vscode"
+  },
   "activationEvents": [
     "onLanguage:yuni"
   ],
-  "main": "./src/extension.js",
+  "main": "./dist/extension.js",
   "scripts": {
     "build": "jiti build.ts",
     "watch": "jiti build.ts --watch"

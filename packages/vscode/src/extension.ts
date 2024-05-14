@@ -3,6 +3,8 @@ import {
   type BaseLanguageClient,
   activateAutoInsertion,
   createLabsInfo,
+  getTsdk,
+  type LabsInfo,
 } from "@volar/vscode";
 import { Uri, type ExtensionContext } from "vscode";
 import {
@@ -16,34 +18,43 @@ const INSPECT = 6000;
 
 let client: BaseLanguageClient;
 
-export async function activate(context: ExtensionContext) {
+export async function activate(context: ExtensionContext): Promise<LabsInfo> {
   const { fsPath: serverFsPath } = Uri.joinPath(
     context.extensionUri,
     "node_modules",
+    "language-server",
     "dist",
-    "server.js"
+    "index.js"
   );
+
+  const runOptions = { execArgv: [] as string[] };
+
+  const debugOptions = { execArgv: ["--nolazy", `--inspect=${INSPECT}`] };
 
   const serverOptions = {
     run: {
       module: serverFsPath,
       transport: TransportKind.ipc,
-      options: { execArgv: [] as string[] },
+      options: runOptions,
     },
     debug: {
       module: serverFsPath,
       transport: TransportKind.ipc,
-      options: { execArgv: ["--nolazy", `--inspect=${INSPECT}`] },
+      options: debugOptions,
     },
   } as const satisfies ServerOptions;
 
   const clientOptions = {
     documentSelector: [{ language: "yuni" }],
-    initializationOptions: {},
+    initializationOptions: {
+      typescript: {
+        tsdk: (await getTsdk(context)).tsdk,
+      },
+    },
   } as const satisfies LanguageClientOptions;
 
   client = new LanguageClient(
-    "yuni",
+    "yuni-language-server",
     "Yuni Language Server",
     serverOptions,
     clientOptions
@@ -58,6 +69,6 @@ export async function activate(context: ExtensionContext) {
   return labsInfo.extensionExports;
 }
 
-export function deactivate(): Thenable<unknown> | void {
-  return client?.stop();
+export async function deactivate(): Promise<void> {
+  await client?.stop();
 }

@@ -1,7 +1,7 @@
-import {
-  type LanguagePlugin,
+import type {
+  LanguagePlugin,
 } from "@volar/language-server/node.js";
-import { type default as TypeScript } from "typescript";
+import type { default as TypeScript } from "typescript";
 import { YuniVirtualCode } from "./YuniVirtualCode.ts";
 import { LANGUAGE_ID } from "./constants.ts";
 

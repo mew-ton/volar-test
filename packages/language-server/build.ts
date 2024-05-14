@@ -12,7 +12,10 @@ context({
   external: ['vscode'],
   format: 'cjs',
   platform: 'node',
-  target: 'esnext', 
+  target: 'esnext',
+  tsconfig: './tsconfig.json',
+  define: { 'process.env.NODE_ENV': '"production"' },
+  treeShaking: true,
 }).then(async (ctx) => {
   if (watch) {
     await ctx.watch()

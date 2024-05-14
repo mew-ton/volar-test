@@ -4,7 +4,12 @@
     {
       "label": "bun_watch",
       "type": "bun",
-      "script": "run watch"
+      "script": "run watch",
+      "isBackground": true,
+      "group": {
+				"kind": "build",
+				"isDefault": true
+			}
     }
   ]
 }
