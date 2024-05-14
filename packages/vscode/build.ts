@@ -12,7 +12,7 @@ context({
   external: ['vscode'],
   format: 'cjs',
   platform: 'node',
-  target: 'esnext', 
+  target: 'esnext',
 }).then(async (ctx) => {
   if (watch) {
     await ctx.watch()

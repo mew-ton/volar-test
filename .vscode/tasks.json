@@ -2,14 +2,14 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "bun_watch",
-      "type": "bun",
-      "script": "run watch",
+      "label": "watch",
+      "type": "npm",
+      "script": "watch",
       "isBackground": true,
       "group": {
-				"kind": "build",
-				"isDefault": true
-			}
+        "kind": "build",
+        "isDefault": true
+      }
     }
   ]
 }

@@ -1,0 +1,6 @@
+---
+pre-commit:
+  commands:
+    biome:
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: yarn dlx biome check --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}

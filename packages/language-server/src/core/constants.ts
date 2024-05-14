@@ -1,2 +1,1 @@
-
-export const LANGUAGE_ID = "yuni";
+export const LANGUAGE_ID = 'yuni'

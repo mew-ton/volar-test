@@ -1,16 +1,18 @@
 {
   "name": "volar-test",
   "type": "module",
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "scripts": {
     "build": "turbo build",
-    "watch": "turbo watch"
+    "watch": "turbo watch",
+    "format": "biome format --write .",
+    "lint": "biome check --apply ."
   },
   "devDependencies": {
-    "turbo": "^1.13.3",
-    "@types/bun": "latest"
+    "@biomejs/biome": "^1.7.3",
+    "@types/bun": "latest",
+    "language-server": "file:./packages/language-server",
+    "turbo": "^1.13.3"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

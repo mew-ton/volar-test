@@ -16,7 +16,7 @@
         "--folder-url=${workspaceRoot}/sample"
       ],
       "outFiles": ["${workspaceRoot}/packages/vscode/dist/*.js"],
-      "preLaunchTask": "bun_watch"
+      "preLaunchTask": "watch"
     }
   ]
 }

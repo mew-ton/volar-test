@@ -1,29 +1,25 @@
-import type {
-  LanguagePlugin,
-} from "@volar/language-server/node.js";
-import type { default as TypeScript } from "typescript";
-import { YuniVirtualCode } from "./YuniVirtualCode.ts";
-import { LANGUAGE_ID } from "./constants.ts";
+import type { LanguagePlugin } from '@volar/language-server/node.js'
+import type { default as TypeScript } from 'typescript'
+import { YuniVirtualCode } from './YuniVirtualCode.ts'
+import { LANGUAGE_ID } from './constants.ts'
 
-export function coreLanguageModule(
-  ts: typeof TypeScript
-): LanguagePlugin<YuniVirtualCode> {
+export function coreLanguageModule(ts: typeof TypeScript): LanguagePlugin<YuniVirtualCode> {
   return {
     getLanguageId(scriptId) {
-      if (scriptId.endsWith(".yuni")) {
-        return LANGUAGE_ID;
+      if (scriptId.endsWith('.yuni')) {
+        return LANGUAGE_ID
       }
     },
 
     createVirtualCode(scriptId, languageId, snapshot) {
-      if (languageId === "yuni") {
-        return new YuniVirtualCode(scriptId, snapshot);
+      if (languageId === 'yuni') {
+        return new YuniVirtualCode(scriptId, snapshot)
       }
     },
 
     updateVirtualCode(_scriptId, virtualCode, newSnapshot) {
       virtualCode.update(newSnapshot)
-      return virtualCode;
+      return virtualCode
     },
 
     // typescript: {
@@ -54,6 +50,5 @@ export function coreLanguageModule(
     //     return result;
     //   },
     // },
-  };
+  }
 }
-
