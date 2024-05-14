@@ -27,6 +27,8 @@ export async function activate(context: ExtensionContext): Promise<LabsInfo> {
     "index.js"
   );
 
+  console.log('serverFsPath', serverFsPath)
+
   const runOptions = { execArgv: [] as string[] };
 
   const debugOptions = { execArgv: ["--nolazy", `--inspect=${INSPECT}`] };
