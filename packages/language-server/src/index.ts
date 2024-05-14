@@ -2,7 +2,6 @@ import {
   createServer,
   createConnection,
   loadTsdkByPath,
-  createSimpleProjectProvider,
   createTypeScriptProjectProvider,
 } from '@volar/language-server/node.js'
 import { getLanguagePlugin, getLanguageServicePlugins } from './ls-plugin.ts'

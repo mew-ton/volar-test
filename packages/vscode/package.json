@@ -13,7 +13,9 @@
     "url": "https://github.com/mew-ton/volar-test",
     "directory": "packages/vscode"
   },
-  "activationEvents": ["onLanguage:yuni"],
+  "activationEvents": [
+    "onLanguage:yuni"
+  ],
   "main": "./dist/extension.js",
   "scripts": {
     "build": "jiti build.ts",
@@ -34,7 +36,9 @@
     "languages": [
       {
         "id": "yuni",
-        "extensions": [".yuni"]
+        "extensions": [
+          ".yuni"
+        ]
       }
     ]
   }
