@@ -1,0 +1,15 @@
+---
+name: HelloWorld
+script: |
+  const message = "Hello, World!";
+render: |
+  <h1>{message}</h1>
+
+---
+name: Home
+script: |
+  import HelloWorld from './HelloWorld';
+render: |
+  <div>
+    <HelloWorld />
+  </div>

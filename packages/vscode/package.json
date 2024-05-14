@@ -1,0 +1,39 @@
+{
+  "name": "vscode-yuni",
+  "displayName": "YUNI-CHAN Extension",
+  "description": "VSCode Extension sample",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.55.0"
+  },
+  "activationEvents": [
+    "onLanguage:yuni"
+  ],
+  "main": "./src/extension.js",
+  "scripts": {
+    "build": "jiti build.ts",
+    "watch": "jiti build.ts --watch"
+  },
+  "dependencies": {
+    "@types/vscode": "^1.89.0",
+    "@volar/language-server": "^2.2.2",
+    "@volar/vscode": "^2.2.2",
+    "language-server": "file:../language-server",
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.21.2",
+    "jiti": "^1.21.0"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "yuni",
+        "extensions": [
+          ".yuni"
+        ]
+      }
+    ]
+  }
+}

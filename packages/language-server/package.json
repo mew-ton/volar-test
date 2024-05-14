@@ -1,0 +1,28 @@
+{
+  "name": "language-server-yuni",
+  "type": "module",
+  "version": "0.0.1",
+  "bin": {
+    "yuni-language-server": "./bin/yuni-language-server.cjs"
+  },
+  "scripts": {
+    "build": "jiti build.ts",
+    "watch": "jiti build.ts --watch"
+  },
+  "dependencies": {
+    "@volar/language-core": "^2.2.2",
+    "@volar/language-server": "^2.2.2",
+    "@volar/language-service": "^2.2.2",
+    "volar-service-css": "^0.0.44",
+    "volar-service-html": "^0.0.44",
+    "vscode-html-languageservice": "^5.2.0",
+    "yaml": "^2.4.2"
+  },
+  "devDependencies": {
+    "esbuild": "^0.21.2",
+    "jiti": "^1.21.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
