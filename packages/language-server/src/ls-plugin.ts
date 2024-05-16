@@ -5,8 +5,9 @@ import type {
   ServiceEnvironment,
   VirtualCode,
 } from '@volar/language-server/node.js'
-import { create as createHtmlService } from 'volar-service-html'
-import { create as createCssService } from 'volar-service-css'
+import { create as createHtmlService } from 'volar-service-html';
+import { create as createCssService } from 'volar-service-css';
+import { create as createTypeScriptServices } from 'volar-service-typescript';
 import type { default as TypeScript } from 'typescript'
 import { coreLanguageModule } from './core/index.ts'
 
@@ -20,5 +21,5 @@ export function getLanguagePlugin(
 }
 
 export function getLanguageServicePlugins(connection: Connection, ts: typeof TypeScript): LanguageServicePlugin[] {
-  return [createHtmlService(), createCssService()]
+  return [createHtmlService(), createCssService(), ...createTypeScriptServices(ts, {})]
 }

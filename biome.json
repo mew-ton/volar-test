@@ -10,6 +10,9 @@
     "enabled": true,
     "rules": {
       "all": true,
+      "suspicious": {
+        "noConsoleLog": "off"
+      },
       "correctness": {
         "noUndeclaredVariables": "off",
         "useHookAtTopLevel": "off",

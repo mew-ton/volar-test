@@ -513,6 +513,7 @@ __metadata:
     typescript: "npm:^5.4.5"
     volar-service-css: "npm:^0.0.44"
     volar-service-html: "npm:^0.0.44"
+    volar-service-typescript: "npm:^0.0.44"
     vscode-html-languageservice: "npm:^5.2.0"
     yaml: "npm:^2.4.2"
   peerDependencies:
@@ -524,20 +525,21 @@ __metadata:
 
 "language-server@file:./packages/language-server::locator=volar-test%40workspace%3A.":
   version: 0.0.1
-  resolution: "language-server@file:./packages/language-server#./packages/language-server::hash=62c63c&locator=volar-test%40workspace%3A."
+  resolution: "language-server@file:./packages/language-server#./packages/language-server::hash=e90d79&locator=volar-test%40workspace%3A."
   dependencies:
     "@volar/language-core": "npm:^2.2.2"
     "@volar/language-server": "npm:^2.2.2"
     "@volar/language-service": "npm:^2.2.2"
     volar-service-css: "npm:^0.0.44"
     volar-service-html: "npm:^0.0.44"
+    volar-service-typescript: "npm:^0.0.44"
     vscode-html-languageservice: "npm:^5.2.0"
     yaml: "npm:^2.4.2"
   peerDependencies:
     typescript: ^5.0.0
   bin:
     yuni-language-server: ./bin/yuni-language-server.cjs
-  checksum: 10/04c8305b26fbe98b34f6b64ed07492536df983ce0b1735cf4ae06b2fc65c0252b41077e4b6f63ed70f165b25db7e8a0ead4b3bed56d40ee0834189607b5cb69e
+  checksum: 10/d0a69dc6fd353df392c57eb9e49b0e154a285208b7bf85219d2022197bca21e8e256f52a5e31e4c1c322cf53723108e91ffe1d39dee19a700625796390a3dcc0
   languageName: node
   linkType: hard
 
@@ -550,6 +552,7 @@ __metadata:
     "@volar/language-service": "npm:^2.2.2"
     volar-service-css: "npm:^0.0.44"
     volar-service-html: "npm:^0.0.44"
+    volar-service-typescript: "npm:^0.0.44"
     vscode-html-languageservice: "npm:^5.2.0"
     yaml: "npm:^2.4.2"
   peerDependencies:
@@ -589,7 +592,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.3.7":
+"semver@npm:^7.3.7, semver@npm:^7.3.8, semver@npm:^7.5.4":
   version: 7.6.2
   resolution: "semver@npm:7.6.2"
   bin:
@@ -669,6 +672,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript-auto-import-cache@npm:^0.3.1":
+  version: 0.3.2
+  resolution: "typescript-auto-import-cache@npm:0.3.2"
+  dependencies:
+    semver: "npm:^7.3.8"
+  checksum: 10/246535b3ca3cfb7dc79263cf36d5731348322b2421a4057dedcd72cb885da708c21e902c4cce59c0ac774a0e984ca949b346e326a42a88ee90b64a428f0f7685
+  languageName: node
+  linkType: hard
+
 "typescript@npm:^5.4.5":
   version: 5.4.5
   resolution: "typescript@npm:5.4.5"
@@ -728,6 +740,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"volar-service-typescript@npm:^0.0.44":
+  version: 0.0.44
+  resolution: "volar-service-typescript@npm:0.0.44"
+  dependencies:
+    path-browserify: "npm:^1.0.1"
+    semver: "npm:^7.5.4"
+    typescript-auto-import-cache: "npm:^0.3.1"
+    vscode-languageserver-textdocument: "npm:^1.0.11"
+    vscode-nls: "npm:^5.2.0"
+  peerDependencies:
+    "@volar/language-service": ~2.2.0
+  peerDependenciesMeta:
+    "@volar/language-service":
+      optional: true
+  checksum: 10/ecf6c183529e7bd9bd479ce580f4d32068b200a0deba5428d0c1f4369da3ecfb2054cc17174025de35efe5d17ac4a653e57dd5f0000c67f03b0e14e4449f3784
+  languageName: node
+  linkType: hard
+
 "volar-test@workspace:.":
   version: 0.0.0-use.local
   resolution: "volar-test@workspace:."
@@ -736,8 +766,6 @@ __metadata:
     "@types/bun": "npm:latest"
     language-server: "file:./packages/language-server"
     turbo: "npm:^1.13.3"
-  peerDependencies:
-    typescript: ^5.0.0
   languageName: unknown
   linkType: soft
 
@@ -854,6 +882,7 @@ __metadata:
     esbuild: "npm:^0.21.2"
     jiti: "npm:^1.21.0"
     language-server: "portal:../language-server"
+    typescript: "npm:^5.4.5"
     vscode-languageclient: "npm:^9.0.1"
   languageName: unknown
   linkType: soft

@@ -1,3 +1,4 @@
+// biome-ignore lint/style/noNamespaceImport: <explanation>
 import * as serverProtocol from '@volar/language-server/protocol.js'
 import { type BaseLanguageClient, activateAutoInsertion, createLabsInfo, getTsdk, type LabsInfo } from '@volar/vscode'
 import { Uri, type ExtensionContext } from 'vscode'
@@ -20,8 +21,6 @@ export async function activate(context: ExtensionContext): Promise<LabsInfo> {
     'dist',
     'index.js',
   )
-
-  console.log('serverFsPath', serverFsPath)
 
   const runOptions = { execArgv: [] as string[] }
 

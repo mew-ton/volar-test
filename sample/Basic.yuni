@@ -1,9 +1,10 @@
 ---
 name: HelloWorld
 script: |
-  const message = "Hello, World!";
+  import { message } from './message.ts'
+  const fixedMessage = message
 render: |
-  <h1>{message}</h1>
+  <h1>{fixedMessage}</h1>
 
 ---
 name: Home
