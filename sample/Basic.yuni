@@ -1,11 +1,17 @@
 ---
+hoge:  |
+  'fuga'
 name: HelloWorld
-script: |
+script:   |
   import { message } from './message.ts'
-  const fixedMessage = message
+  const fixedMessage = message;
 render: |
-  <h1>{fixedMessage}</h1>
+  <h1 class="message">{fixedMessage}</h1>
 
+style: |
+  .message {
+    color: red;
+  }
 ---
 name: Home
 script: |

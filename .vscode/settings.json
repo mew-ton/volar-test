@@ -1,4 +1,7 @@
 {
-  "cSpell.words": ["Yuni"],
+  "cSpell.words": [
+    "codegen",
+    "Yuni"
+  ],
   "npm.packageManager": "yarn"
 }

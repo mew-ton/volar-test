@@ -16,7 +16,7 @@ connection.onInitialize((params) => {
   const tsdk = params.initializationOptions?.typescript?.tsdk
 
   if (!tsdk) {
-    throw new Error('The `typescript.tsdk` init optioin is rtequired.')
+    throw new Error('The `typescript.tsdk` init option is required.')
   }
 
   const { typescript, diagnosticMessages } = loadTsdkByPath(tsdk, params.locale)

@@ -31,7 +31,7 @@ export function coreLanguageModule(
 
     typescript: {
       extraFileExtensions: [
-        { extension: ".yuni", isMixedContent: true, scriptKind: 7 },
+        { extension: ".yuni", isMixedContent: true, scriptKind: 7 satisfies ScriptKind.Deferred },
       ],
 
       getServiceScript(_yuniCode) {
@@ -41,16 +41,19 @@ export function coreLanguageModule(
       getExtraServiceScripts(fileName, yuniCode) {
         const result: ExtraServiceScript[] = [];
         for (const code of forEachEmbeddedCode(yuniCode)) {
-          if (code.id.endsWith(".mjs") || code.id.endsWith(".mts")) {
-            const fileExtension = code.id.endsWith(".mjs") ? ".mjs" : ".mts";
+          if (code.languageId === "javascript") {
             result.push({
               fileName: `${fileName}.${code.id}`,
               code,
-              extension: fileExtension,
-              scriptKind:
-                fileExtension === ".mjs"
-                  ? (1 satisfies ScriptKind.JS)
-                  : (3 satisfies ScriptKind.TS),
+              extension: ".js",
+              scriptKind: 1 satisfies ScriptKind.JS,
+            });
+          } else if (code.languageId === "typescript") {
+            result.push({
+              fileName: `${fileName}.${code.id}`,
+              code,
+              extension: ".ts",
+              scriptKind: 3 satisfies ScriptKind.TS,
             });
           }
         }

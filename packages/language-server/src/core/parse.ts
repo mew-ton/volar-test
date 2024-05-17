@@ -1,8 +1,10 @@
 import type { VirtualCode } from "@volar/language-server/node.js";
+import type { TextDocument } from "vscode-languageserver-textdocument";
 import type { IScriptSnapshot } from "typescript";
-import { KEY_NAME, KEY_RENDER, KEY_SCRIPT } from "./constants.ts";
+import { KEY_NAME, KEY_RENDER, KEY_SCRIPT, KEY_STYLE } from "./constants.ts";
 import { type Document, parseAllDocuments, type EmptyStream } from "yaml";
 import type { ComponentNode, UnknownNode } from "./type.ts";
+import { Mapping, SourceMap, SourceMapWithDocuments } from "@volar/language-service";
 
 export function parseYuniCode(
   filename: string,
@@ -60,7 +62,7 @@ function parseVirtualCodes(
 
   const components = nodes
     .filter(validateRootNode)
-    .flatMap((n, i) => parseComponent(createComponentName(n, i), n));
+    .flatMap((n, i) => parseComponent(snapshot, createComponentName(n, i), n));
 
   return components;
 }
@@ -77,6 +79,7 @@ function validateRootNode(
 }
 
 function parseComponent(
+  snapshot: IScriptSnapshot,
   componentName: string,
   document: Document<ComponentNode>
 ): VirtualCode[] {
@@ -89,12 +92,16 @@ function parseComponent(
   }
 
   for (const item of document.contents?.items ?? []) {
-    const startPos = (item.value?.range?.[0] ?? 0) - 1;
-    const virtualScript = item.value?.value ?? "";
+    const nodeStart = (item.value?.range?.[0] ?? 0) - 1;
 
-    if (startPos < 0 || item.key?.value === KEY_NAME) {
+    if (nodeStart < 0 || item.key?.value === KEY_NAME) {
       continue;
     }
+    const isBreakLineAs2Char = snapshot.getText(0, snapshot.getLength()).includes("\r\n");
+    const startPos = nodeStart + 2 + (isBreakLineAs2Char ? 2 : 1);
+    const parsedScript = item.value?.value ?? "";
+    const lines = parsedScript.split("\n").length
+    const virtualScript = snapshot.getText(startPos, startPos + parsedScript.length + lines * 2)
 
     const commonEmbeddedCodes = {
       snapshot: {
@@ -104,6 +111,12 @@ function parseComponent(
         getLength: () => virtualScript.length,
         getChangeRange: () => undefined,
       },
+      content: parsedScript,
+      virtualContent: virtualScript,
+      range: item.value?.range ?? [-1. -1. -1],
+      codegenStacks: [],
+      linkedCodeMappings: [],
+      embeddedCodes: [],
       mappings: [
         {
           sourceOffsets: [startPos],
@@ -121,8 +134,7 @@ function parseComponent(
       ],
     } satisfies Omit<VirtualCode, "id" | "languageId">;
 
-    // biome-ignore lint/style/noNonNullAssertion: <explanation>
-    switch (item.key.value!) {
+    switch (item.key.value) {
       case KEY_SCRIPT: {
         embeddedCodes.push({
           id: `${componentName}.ts`,
@@ -139,8 +151,20 @@ function parseComponent(
         });
         break;
       }
+      case KEY_STYLE: {
+        embeddedCodes.push({
+          id: `${componentName}.css`,
+          languageId: "css",
+          ...commonEmbeddedCodes,
+        });
+        break;
+      }
     }
   }
 
+  console.dir(embeddedCodes, { depth: null })
   return embeddedCodes;
+}
+
+class SourceInYaml extends SourceMapWithDocuments {
 }

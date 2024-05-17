@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "@types/vscode": "^1.89.0",
-    "@volar/language-server": "^2.2.2",
-    "@volar/vscode": "^2.2.2",
+    "@volar/language-server": "^2.2.4",
+    "@volar/vscode": "^2.2.4",
     "language-server": "portal:../language-server",
     "vscode-languageclient": "^9.0.1"
   },

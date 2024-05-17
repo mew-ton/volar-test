@@ -23,12 +23,13 @@
     "watch": "jiti build.ts --watch"
   },
   "dependencies": {
-    "@volar/language-core": "^2.2.2",
-    "@volar/language-server": "^2.2.2",
-    "@volar/language-service": "^2.2.2",
-    "volar-service-css": "^0.0.44",
-    "volar-service-html": "^0.0.44",
-    "volar-service-typescript": "^0.0.44",
+    "@volar/language-core": "^2.2.4",
+    "@volar/language-server": "^2.2.4",
+    "@volar/language-service": "^2.2.4",
+    "volar-service-css": "^0.0.45",
+    "volar-service-html": "^0.0.45",
+    "volar-service-typescript": "^0.0.45",
+    "volar-service-yaml": "^0.0.45",
     "vscode-html-languageservice": "^5.2.0",
     "yaml": "^2.4.2"
   },
